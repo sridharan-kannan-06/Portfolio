@@ -15,7 +15,7 @@
     --border-subtle:#393939;
     --border-strong:#525252;
     --text-primary: #f4f4f4;
-    --text-secondary:c6c6c6;
+    --text-secondary: #c6c6c6;  /* fixed: was missing # */
     --text-helper: #8d8d8d;
     --link: #78a9ff;
     --link-hover: #a6c8ff;
@@ -264,41 +264,6 @@
     font-size:0.85rem;
   }
 
-  /* ===================== CERTIFICATIONS ===================== */
-  .cert-list{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-    gap:1px;
-    background:var(--border-subtle);
-    border:1px solid var(--border-subtle);
-  }
-
-  .cert-card{
-    background:var(--layer);
-    padding:var(--space-3) var(--space-4);
-    display:flex;
-    flex-direction:column;
-    gap:0.3rem;
-  }
-
-  .cert-card:hover{ background:var(--layer-hover); }
-
-  .cert-card h3{ font-size:1rem; }
-
-  .cert-issuer{
-    font-size:0.85rem;
-    color:var(--text-secondary);
-  }
-
-  .cert-meta{
-    font-family:var(--font-mono);
-    font-size:0.75rem;
-    color:var(--text-helper);
-    display:flex;
-    justify-content:space-between;
-    margin-top:0.4rem;
-  }
-
   /* ===================== PROJECTS ===================== */
   .section-head{
     display:flex;
@@ -471,7 +436,6 @@
         <li><a href="#education">Education</a></li>
         <li><a href="#work">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
-        <!-- <li><a href="#certifications">Certifications</a></li> -->
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -482,7 +446,7 @@
     <div class="wrap">
       <span class="hero-greeting">$ whoami</span>
       <h1 class="hero-name">Sridharan Kannan<span class="cursor"></span></h1>
-      <!-- <p class="hero-tagline">B.Tech CSE student</p> -->
+      <p class="hero-tagline">Systems programmer. Building from scratch.</p>
       <div class="button-row">
         <a href="#work" class="btn btn-primary">Projects</a>
         <a href="resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Résumé</a>
@@ -496,7 +460,7 @@
       <h2>About</h2>
       <div>
         <p>I am a Computer Science student at Amrita Vishwa Vidyapeetham with a strong focus on backend systems and distributed architectures.</p>
-        <p>I enjoy building high-performance applications from scratch, whether that is engineering a concurrent in memory database in C++ or developing real time tracking applications. I am constantly solving algorithmic challenges and looking for opportunities to contribute to real world products.</p>
+        <p>I enjoy building high-performance applications from scratch, whether that is engineering a concurrent in-memory database in C++ or developing real-time tracking applications. I am constantly solving algorithmic challenges and looking for opportunities to contribute to real-world products.</p>
         <ul class="focus-list">
           <li>Backend development</li>
           <li>Systems & data structures</li>
@@ -514,19 +478,18 @@
       </div>
       <ul class="timeline">
         <li class="timeline-item">
-          <span class="timeline-years">2024 - 2028</span>
+          <span class="timeline-years">2024 – 2028</span>
           <div>
             <h3>B.Tech, Computer Science & Engineering</h3>
             <p class="institution">Amrita Vishwa Vidyapeetham, Coimbatore</p>
-            <!-- <p class="detail">CGPA: 8.63 / 10 · Relevant coursework: Data Structures, OS, DBMS</p> -->
+            <p class="detail">CGPA: 8.63 / 10</p>
           </div>
         </li>
         <li class="timeline-item">
-          <span class="timeline-years">2012 — 2024</span>
+          <span class="timeline-years">2012 – 2024</span>
           <div>
             <h3>Secondary (X), Senior Secondary (XII)</h3>
             <p class="institution">Delhi Public School, Coimbatore</p>
-            <!-- <p class="detail">10<sup>th</sup> Score: 96%, 12<sup>th</sup> Score: 90%</p> -->
           </div>
         </li>
       </ul>
@@ -538,7 +501,6 @@
     <div class="wrap">
       <div class="section-head">
         <h2>Projects</h2>
-        <!-- <span class="eyebrow">3 projects</span> -->
       </div>
 
       <div class="project-grid">
@@ -546,15 +508,14 @@
         <div class="project-card">
           <span class="project-path">~/projects/cppkv</span>
           <h3>CppKV</h3>
-          <p class="project-type">Distributed In-Memory Database</p>
-          <p class="desc">A Redis-inspired, high-throughput key-value store handling ~60k ops/sec. Features a lock-free sharded execution model using Windows IOCP, Write-Ahead Logging (WAL), snapshot persistence, and consistent hash clustering over a custom RESP parser.</p>
+          <p class="project-type">Distributed In-Memory Database · Individual Project</p>
+          <p class="desc">A Redis-compatible, high-throughput key-value store handling ~60k ops/sec. Features a lock-free sharded execution model using Windows IOCP, Write-Ahead Logging (WAL), binary snapshot persistence, primary-replica replication via PSYNC, and consistent hash ring clustering over a custom RESP parser.</p>
           <div class="tag-row">
             <span class="tag">C++20</span>
             <span class="tag">Windows IOCP</span>
             <span class="tag">Distributed Systems</span>
             <span class="tag">Multithreading</span>
             <span class="tag">Network Programming</span>
-            <span class="tag">System Design</span>
             <span class="tag">RESP Protocol</span>
           </div>
           <div class="project-links">
@@ -566,44 +527,33 @@
         <div class="project-card">
           <span class="project-path">~/projects/hopon</span>
           <h3>HopOn</h3>
-          <p class="project-type">Web App</p>
-          <p class="desc">A real time bus tracking desktop application featuring dynamic route mapping, live ETA calculation using the Haversine formula, and role based access.</p>
+          <p class="project-type">Progressive Web App · Team Project</p>
+          <p class="desc">A real-time bus tracking PWA installable on mobile and desktop without an app store. Features role-based interfaces for admins, drivers, and passengers, live location sync via Firebase Realtime Database, road-accurate ETAs using the OSRM routing API with Haversine fallback, and an interactive route builder on OpenStreetMap.</p>
           <div class="tag-row">
             <span class="tag">JavaScript</span>
-            <span class="tag">Electron.js</span>
-            <span class="tag">Google Maps API</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">Leaflet.js</span>
+            <span class="tag">OpenStreetMap</span>
+            <span class="tag">OSRM</span>
+            <span class="tag">PWA</span>
           </div>
           <div class="project-links">
             <a href="https://github.com/sridharan-kannan-06/HopOn" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://hopon-a297c.web.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
           </div>
         </div>
 
         <div class="project-card">
           <span class="project-path">~/projects/pingpong</span>
           <h3>PingPong</h3>
-          <p class="project-type">2D Game</p>
-          <p class="desc">A classic two player arcade game featuring custom physics, real time collision detection, and interactive player power ups.</p>
+          <p class="project-type">2D Game · Individual Project</p>
+          <p class="desc">A classic two-player arcade game featuring custom physics, real-time collision detection, dynamic ball mechanics, and interactive power-ups including smash and auto-hit.</p>
           <div class="tag-row">
             <span class="tag">Python</span>
             <span class="tag">Pygame</span>
           </div>
           <div class="project-links">
             <a href="https://github.com/sridharan-kannan-06/PingPong" target="_blank" rel="noopener noreferrer">GitHub</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <span class="project-path">~/projects/portfolio</span>
-          <h3>Portfolio</h3>
-          <p class="project-type">Web Application</p>
-          <p class="desc">A fully responsive, custom-built personal website designed to showcase my technical projects.</p>
-          <div class="tag-row">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JavaScript</span>
-          </div>
-          <div class="project-links">
-            <a href="#">GitHub</a>
           </div>
         </div>
 
@@ -622,66 +572,42 @@
           <h3>Languages</h3>
           <div class="pill-row">
             <span class="pill">C</span>
-            <span class="pill">C++</span>
+            <span class="pill">C++20</span>
             <span class="pill">Python</span>
-            <span class="pill">HTML</span>
-            <span class="pill">CSS</span>
             <span class="pill">JavaScript</span>
             <span class="pill">SQL</span>
-          </div>
-        </div>
-        <div class="skills-group">
-          <h3>Frameworks & Tools</h3>
-          <div class="pill-row">
-            <span class="pill">Electron.js</span>
-            <span class="pill">Pygame</span>
-            <span class="pill">Git</span>
             <span class="pill">Shell Scripting</span>
           </div>
         </div>
         <div class="skills-group">
-          <h3>Core Competencies</h3>
+          <h3>Tools & Frameworks</h3>
           <div class="pill-row">
+            <span class="pill">Git</span>
+            <span class="pill">Firebase</span>
+            <span class="pill">Leaflet.js</span>
+            <span class="pill">MySQL</span>
+            <span class="pill">Pygame</span>
+          </div>
+        </div>
+        <div class="skills-group">
+          <h3>Concepts</h3>
+          <div class="pill-row">
+            <span class="pill">Concurrent Programming</span>
+            <span class="pill">Systems Programming</span>
+            <span class="pill">Network Programming</span>
+            <span class="pill">Distributed Systems</span>
             <span class="pill">Data Structures & Algorithms</span>
-            <span class="pill">Manual & Functional Testing</span>
-            <span class="pill">Embedded Systems & Microcontrollers</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== CERTIFICATIONS ===================== -->
-  <!-- <section id="certifications">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Certifications</h2>
-      </div>
-      <div class="cert-list">
-        <div class="cert-card">
-          <h3>Certification Name</h3>
-          <p class="cert-issuer">Issued by — Coursera / NPTEL / AWS / etc.</p>
-          <div class="cert-meta">
-            <span>Issued 2026</span>
-            <a href="#">View →</a>
-          </div>
-        </div>
-        <div class="cert-card">
-          <h3>Certification Name</h3>
-          <p class="cert-issuer">Issued by — Coursera / NPTEL / AWS / etc.</p>
-          <div class="cert-meta">
-            <span>Issued 2026</span>
-            <a href="#">View →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
   <!-- ===================== CONTACT ===================== -->
   <section id="contact">
     <div class="wrap contact-inner">
       <span class="eyebrow">Get in touch</span>
+      <h2>Let's connect</h2>
       <a href="mailto:sridharank1805@gmail.com" class="contact-email">sridharank1805@gmail.com</a>
       <div class="social-row">
         <a href="https://github.com/sridharan-kannan-06" target="_blank" rel="noopener noreferrer">GitHub</a>
